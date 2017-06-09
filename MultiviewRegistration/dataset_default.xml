@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SpimData version="0.2">
+  <BasePath type="relative">.</BasePath>
+  <SequenceDescription>
+    <ImageLoader format="spimreconstruction.stack.ij">
+      <imagedirectory type="relative">.</imagedirectory>
+      <filePattern>stack{a}.tif</filePattern>
+      <layoutTimepoints>0</layoutTimepoints>
+      <layoutChannels>0</layoutChannels>
+      <layoutIlluminations>0</layoutIlluminations>
+      <layoutAngles>1</layoutAngles>
+      <imglib2container>ArrayImgFactory</imglib2container>
+    </ImageLoader>
+    <ViewSetups>
+      <ViewSetup>
+        <id>0</id>
+        <voxelSize>
+          <unit>um</unit>
+          <size>0.406 0.406 5.0</size>
+        </voxelSize>
+        <attributes>
+          <illumination>0</illumination>
+          <channel>0</channel>
+          <tile>0</tile>
+          <angle>0</angle>
+        </attributes>
+      </ViewSetup>
+      <ViewSetup>
+        <id>1</id>
+        <voxelSize>
+          <unit>um</unit>
+          <size>0.406 0.406 5.0</size>
+        </voxelSize>
+        <attributes>
+          <illumination>0</illumination>
+          <channel>0</channel>
+          <tile>0</tile>
+          <angle>1</angle>
+        </attributes>
+      </ViewSetup>
+      <Attributes name="illumination">
+        <Illumination>
+          <id>0</id>
+          <name>0</name>
+        </Illumination>
+      </Attributes>
+      <Attributes name="channel">
+        <Channel>
+          <id>0</id>
+          <name>0</name>
+        </Channel>
+      </Attributes>
+      <Attributes name="tile">
+        <Tile>
+          <id>0</id>
+          <name>0</name>
+        </Tile>
+      </Attributes>
+      <Attributes name="angle">
+        <Angle>
+          <id>0</id>
+          <name>0</name>
+        </Angle>
+        <Angle>
+          <id>1</id>
+          <name>1</name>
+        </Angle>
+      </Attributes>
+    </ViewSetups>
+    <Timepoints type="pattern">
+      <integerpattern />
+    </Timepoints>
+  </SequenceDescription>
+  <ViewRegistrations>
+    <ViewRegistration timepoint="0" setup="0">
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 12.31527093596059 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="0" setup="1">
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 12.31527093596059 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+  </ViewRegistrations>
+  <ViewInterestPoints />
+  <BoundingBoxes />
+</SpimData>
