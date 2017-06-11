@@ -21,7 +21,6 @@
         <attributes>
           <illumination>0</illumination>
           <channel>0</channel>
-          <tile>0</tile>
           <angle>0</angle>
         </attributes>
       </ViewSetup>
@@ -34,7 +33,6 @@
         <attributes>
           <illumination>0</illumination>
           <channel>0</channel>
-          <tile>0</tile>
           <angle>1</angle>
         </attributes>
       </ViewSetup>
@@ -49,12 +47,6 @@
           <id>0</id>
           <name>0</name>
         </Channel>
-      </Attributes>
-      <Attributes name="tile">
-        <Tile>
-          <id>0</id>
-          <name>0</name>
-        </Tile>
       </Attributes>
       <Attributes name="angle">
         <Angle>

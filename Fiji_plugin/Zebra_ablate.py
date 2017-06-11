@@ -91,7 +91,7 @@ def doSomething(keyEvent):
       f.write('<zStart units="um">' + str(zStart) + '</zStart>\n')
       f.write('<zStep units="um">' + str(zStep) + '</zStep>\n')
       f.write('<xOffset units="px">' + str(xOffset) + '</xOffset>\n')
-      f.write('<yOffset units="px">' + str(yOffset) + '</yOffset>\n\n')
+      f.write('<yOffset units="px">' + str(yOffset) + '</yOffset>\n')
       f.write('<radiusROI units="px">' + str(radius) + '</radiusROI>\n\n')
       for i in range(len(xlist)):
             f.write('#cell num:'+str(i)+'\n')
