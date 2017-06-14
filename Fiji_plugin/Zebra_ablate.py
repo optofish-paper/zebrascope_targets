@@ -1,4 +1,4 @@
-# tool for circular ROI selection and saving in 2P excitation profile
+# tool for ROI selection and saving in 2P excitation profile for Zebrascope
 # by Nikita Vladimirov <nvladimus@gmail.com>
 # started 08Jan2015
 from ij import IJ
@@ -10,31 +10,32 @@ from ij.io import SaveDialog
 def getOptions():
     global listener, xlist, ylist, zlist, manager
     gd = GenericDialog("Target Selection")
-    gd.addChoice('type', ['point', 'circle', 'spiral'], 'point')
+    gd.addMessage('Mandatory parameters\n')
     gd.addChoice('type', ['point', 'circle', 'spiral'], 'point')
     gd.addNumericField("                power (%)", 85, 0)
-    gd.addNumericField("                duration (millisec)", 1, 0) 
-    gd.addNumericField("                (optional) radius of a circle/spiral", 5, 0) 
-    gd.addNumericField("                (optional) num. of turns per circle/spiral", 3, 0)
-    gd.addNumericField("                take image after every .. entries", 1, 0)
+    gd.addNumericField("                duration (millisec)", 3, 0) 
     gd.addNumericField("                interval between entries (ms)", 5000, 0)
     gd.addNumericField("                Z-start of stack (microns)", 0, 0)
     gd.addNumericField("                Z-step of stack (microns)", 5, 0)
-    gd.addNumericField("                (optional) add offset to X coordinates", 0, 0)
-    gd.addNumericField("                (optional) add offset to Y coordinates", 0, 0)  
-    gd.addNumericField("                (optional) imaging stack # for excitation onset (0,1,..)", 0, 0) 
-    gd.addMessage('Press ENTER to save\n')
+    gd.addMessage('Optional\n')
+    gd.addNumericField("                radius of a circle/spiral", 5, 0) 
+    gd.addNumericField("                num. of turns per circle/spiral", 3, 0)
+    gd.addNumericField("                take image after every .. entries", 1, 0)    
+    gd.addNumericField("                add offset to X coordinates", 0, 0)
+    gd.addNumericField("                add offset to Y coordinates", 0, 0)  
+    gd.addNumericField("                imaging stack # for excitation onset (0,1,..)", 0, 0)     
+    gd.addMessage('Press ENTER to save the coordinate file\n')
     gd.addMessage('Press ESC to restart\n')
     gd.showDialog()
     profileType = gd.getNextChoice()
     power = gd.getNextNumber()
     duration = gd.getNextNumber() 
-    r = gd.getNextNumber()
-    Nturns = gd.getNextNumber()
-    camTriggerEvery = gd.getNextNumber()
     prewait = gd.getNextNumber()
     zStart = gd.getNextNumber()
     zStep = gd.getNextNumber()
+    r = gd.getNextNumber()
+    Nturns = gd.getNextNumber()
+    camTriggerEvery = gd.getNextNumber()
     xOffset = gd.getNextNumber()
     yOffset = gd.getNextNumber()
     tmIndex = gd.getNextNumber()
@@ -62,7 +63,7 @@ class ML(MouseAdapter):
         iROI += 1
         canv = imp.getCanvas()
         p = canv.getCursorLoc()
-        z = imp.getSlice()
+        z = imp.getCurrentSlice()
         roi = OvalRoi(p.x - radius, p.y - radius, radius*2, radius*2)
         roi.setName('z' + str(z) + 'cell' + str(iROI))
         roi.setPosition(z)
@@ -80,13 +81,12 @@ class ListenToKey(KeyAdapter):
 def doSomething(keyEvent):
   """ A function to react to key being pressed on an image canvas. """
   global iROI, xlist, ylist, zlist, power, profileType, duration, Nturns, camTriggerEvery, zStart, zStep, prewait, xOffset, yOffset, tmIndex
-  print "clicked keyCode " + str(keyEvent.getKeyCode())
+#  print "clicked keyCode " + str(keyEvent.getKeyCode())
   if keyEvent.getKeyCode() == 10: # Enter is pressed!
       sd = SaveDialog('Save ROIs','.','Eprofile','.txt')
       directory = sd.getDirectory()
       filename = sd.getFileName()
       filepath = directory + filename
-      print filepath
       f = open(filepath, 'w')
       f.write('<zStart units="um">' + str(zStart) + '</zStart>\n')
       f.write('<zStep units="um">' + str(zStep) + '</zStep>\n')
