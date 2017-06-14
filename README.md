@@ -1,10 +1,10 @@
 # Zebrascope targets
 This repo consists of 2 parts:
-1. an ImageJ plugin `Fiji_plugin/Zebra_ablate.py` for manual cell selection and saving their coordinates for two-photon ablation in file `EProfile.txt`.
-2. an IPython notebook `MultiviewRegistration/ExcitationProfileCorrection.ipynb` which takes two TIFF stacks, registers second to the first (rigid registration) using [Multiview-Reconstruction plugin](https://imagej.net/Multiview-Reconstruction), and applies the drift/rotation correction to the ablation coordinates file `EProfile.txt` generated in step 1. This dramatically improves ablation accuracy of [Zebrascope](https://www.nature.com/nmeth/journal/v11/n9/full/nmeth.3040.html)
+1. an [ImageJ plugin](/Fiji_plugin/Zebra_ablate.py "Zebra_ablate.py") for manual cell selection and saving their coordinates for two-photon ablation in file `EProfile.txt`.
+2. an IPython [notebook](MultiviewRegistration/ExcitationProfileCorrection.ipynb "Coordinate correction notebook") which takes two TIFF stacks, registers second to the first (rigid registration) using [Multiview-Reconstruction plugin](https://imagej.net/Multiview-Reconstruction), and applies the drift/rotation correction to the ablation coordinates file `EProfile.txt` generated in step 1. This dramatically improves ablation accuracy of [Zebrascope](https://www.nature.com/nmeth/journal/v11/n9/full/nmeth.3040.html)
 
 ### Usage 
-1. To use the Fiji plugin (part 1), copy `Zebra_ablate.py` into your local `Fiji.app/plugins` folder. Restart Fiji, open an image stack, click `Plugins` > `Zebra ablate`, 
+1. To use the Fiji plugin (part 1), copy [Zebra_ablate.py](/Fiji_plugin/Zebra_ablate.py "Zebra_ablate plugin") into your local `Fiji.app/plugins` folder. Restart Fiji, open an image stack, click `Plugins` > `Zebra ablate`, 
 and set up ablation parameters. 
 ![Plugin GUI](/Fiji_plugin/GUI_screenshot.png "GUI_screenshot.png")
 
@@ -19,7 +19,7 @@ The plugin saves ablation coordinates in 2 files:
 ![Stack0 and Stack1](/Fiji_plugin/Stack0_Stack1.png "Stack0_Stack1.png")
 (they look similar but left stack is actually offset from right stack by (1.6, 0.7, 2.1) um in (x,y,z) )
 
-The IPython notebook `MultiviewRegistration/ExcitationProfileCorrection.ipynb` registers second file to the first and applies the drift/rotation correction to the original coordinate files `EProfile.txt` and `EProfile.txt.zip`. Registration takes about 1 min.
+The IPython [notebook](MultiviewRegistration/ExcitationProfileCorrection.ipynb "Coordinate correction notebook") registers second file to the first and applies the drift/rotation correction to the original coordinate files `EProfile.txt` and `EProfile.txt.zip`. Registration takes about 1 min.
 
 ### Dependencies
 The Fiji plugin requires [Java 8](https://java.com/en/) and latest [Fiji](https://fiji.sc/#download) distibution.
