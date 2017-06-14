@@ -4,8 +4,8 @@ This repo consists of 2 parts:
 2. an IPython [notebook](MultiviewRegistration/ExcitationProfileCorrection.ipynb "Coordinate correction notebook") which takes two TIFF stacks, registers second to the first (rigid registration) using [Multiview-Reconstruction plugin](https://imagej.net/Multiview-Reconstruction), and applies the drift/rotation correction to the ablation coordinates file `EProfile.txt` generated in step 1. This dramatically improves ablation accuracy of [Zebrascope](https://www.nature.com/nmeth/journal/v11/n9/full/nmeth.3040.html)
 
 ### Usage: Fiji Plugin
-To use the Fiji plugin (part 1), copy [Zebra_ablate.py](/Fiji_plugin/Zebra_ablate.py "Zebra_ablate plugin") into your local `Fiji.app/plugins` folder. Restart Fiji, open an image stack, click `Plugins` > `Zebra ablate`, 
-and set up ablation parameters. 
+To use the Fiji plugin (part 1), copy [Zebra_ablate.py](/Fiji_plugin/Zebra_ablate.py "Zebra_ablate plugin") into your local `Fiji.app/plugins` folder. Restart Fiji, open an image stack, click `Plugins` > `Zebra ablate`, and set up ablation parameters.
+ 
 ![Plugin GUI](/Fiji_plugin/GUI_screenshot.png "GUI_screenshot.png")
 
 Once excitation targets are selected, press **Enter** to save them.
@@ -15,7 +15,7 @@ The plugin saves ablation coordinates in 2 files:
 * A text file `EProfile.txt` in Zebrascope-compatible format.
 * A zip file `EProfile.txt.zip`, which contains ROIs for Fiji ROI manager. Drag it into Fiji, it opens the ROIs automatically.
 
-### Usage: Rigd registration and coordinate correction
+### Usage: Rigid registration and coordinate correction
 To correct the ablation coordinates for drift/rotation, the user needs two TIFF files. First file (reference) is a grayscale file corresponding to the stack used in part 1 for cell selection. Second file (pre-ablation) is acquired directly before ablation. 
 ![Stack0 and Stack1](/Fiji_plugin/Stack0_Stack1.png "Stack0_Stack1.png")
 (they look similar but left stack is actually offset from right stack by (1.6, 0.7, 2.1) um in (x,y,z) )
