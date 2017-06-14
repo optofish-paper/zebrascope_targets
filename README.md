@@ -9,7 +9,7 @@ and set up ablation parameters.
 ![Plugin GUI](/Fiji_plugin/GUI_screenshot.png "GUI_screenshot.png")
 
 Once excitation targets are selected, press **Enter** to save them.
-![ROI_screenshot](/Fiji_plugin/ROI_screenshot1.png "ROI_screenshot.png")
+![ROI_screenshot](/Fiji_plugin/ROI_screenshot_800.png "ROI_screenshot.png")
 
 The plugin saves ablation coordinates in 2 files: 
     * A text file `EProfile.txt` in Zebrascope-compatible format.
