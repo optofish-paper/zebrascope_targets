@@ -1,7 +1,7 @@
 # Zebrascope targets
 This repo consists of 2 parts:
 1. an ImageJ plugin `Fiji_plugin/Zebra_ablate.py` for manual cell selection and saving their coordinates for two-photon ablation in file `EProfile.txt`.
-2. an IPython notebook `MultiviewRegistration/ExcitationProfileCorrection.ipynb` which takes two TIFF stacks, registers second to the first (rigid registration) using [Multiveiew-Reconstruction plugin](https://imagej.net/Multiview-Reconstruction), and applies the drift/rotation correction to the ablation coordinates file `EProfile.txt` generated in step 1. This dramatically improves ablation accuracy of [Zebrascope](https://www.nature.com/nmeth/journal/v11/n9/full/nmeth.3040.html)
+2. an IPython notebook `MultiviewRegistration/ExcitationProfileCorrection.ipynb` which takes two TIFF stacks, registers second to the first (rigid registration) using [Multiview-Reconstruction plugin](https://imagej.net/Multiview-Reconstruction), and applies the drift/rotation correction to the ablation coordinates file `EProfile.txt` generated in step 1. This dramatically improves ablation accuracy of [Zebrascope](https://www.nature.com/nmeth/journal/v11/n9/full/nmeth.3040.html)
 
 ### Usage 
 1. To use the Fiji plugin (part 1), copy `Zebra_ablate.py` into your local `Fiji.app/plugins` folder. Restart Fiji, open an image stack, click `Plugins` > `Zebra ablate`, 
@@ -9,7 +9,7 @@ and set up ablation parameters.
 ![Plugin GUI](/Fiji_plugin/GUI_screenshot.png "GUI_screenshot.png")
 
 Once excitation targets are selected, press **Enter** to save them.
-![Plugin GUI](/Fiji_plugin/ROI_screenshot.png "ROI_screenshot.png")
+![ROI_screenshot](/Fiji_plugin/ROI_screenshot1.png "ROI_screenshot.png")
 
 The plugin saves ablation coordinates in 2 files: 
     * A text file `EProfile.txt` in Zebrascope-compatible format.
@@ -17,6 +17,7 @@ The plugin saves ablation coordinates in 2 files:
 
 2. To correct the ablation coordinates in files generated in part 1 for drift/rotation, the user needs two TIFF files. First file (reference) is a grayscale file corresponding to the stack used in part 1 for cell selection. Second file (pre-ablation) is acquired directly before ablation. 
 ![Stack0 and Stack1](/Fiji_plugin/Stack0_Stack1.png "Stack0_Stack1.png")
+(they look similar but left stack is actually offset from right stack by (1.6, 0.7, 2.1) um in (x,y,z) )
 
 The IPython notebook `MultiviewRegistration/ExcitationProfileCorrection.ipynb` registers second file to the first and applies the drift/rotation correction to the original coordinate files `EProfile.txt` and `EProfile.txt.zip`. Registration takes about 1 min.
 
