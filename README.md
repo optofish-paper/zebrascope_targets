@@ -12,8 +12,8 @@ Once excitation targets are selected, press **Enter** to save them.
 ![ROI_screenshot](/Fiji_plugin/ROI_screenshot_800.png "ROI_screenshot.png")
 
 The plugin saves ablation coordinates in 2 files: 
-    * A text file `EProfile.txt` in Zebrascope-compatible format.
-    * A zip file `EProfile.txt.zip`, which contains ROIs for Fiji ROI manager. Drag it into Fiji, it opens the ROIs automatically.
+* A text file `EProfile.txt` in Zebrascope-compatible format.
+* A zip file `EProfile.txt.zip`, which contains ROIs for Fiji ROI manager. Drag it into Fiji, it opens the ROIs automatically.
 
 2. To correct the ablation coordinates in files generated in part 1 for drift/rotation, the user needs two TIFF files. First file (reference) is a grayscale file corresponding to the stack used in part 1 for cell selection. Second file (pre-ablation) is acquired directly before ablation. 
 ![Stack0 and Stack1](/Fiji_plugin/Stack0_Stack1.png "Stack0_Stack1.png")
