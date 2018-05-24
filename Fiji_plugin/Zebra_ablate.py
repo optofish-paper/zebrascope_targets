@@ -64,6 +64,9 @@ class ML(MouseAdapter):
         canv = imp.getCanvas()
         p = canv.getCursorLoc()
         z = imp.getCurrentSlice()
+        nCh = imp.getNChannels()
+        if nCh > 1:
+            z = (z+1)/nCh
         roi = OvalRoi(p.x - radius, p.y - radius, radius*2, radius*2)
         roi.setName('z' + str(z) + 'cell' + str(iROI))
         roi.setPosition(z)
@@ -81,7 +84,6 @@ class ListenToKey(KeyAdapter):
 def doSomething(keyEvent):
   """ A function to react to key being pressed on an image canvas. """
   global iROI, xlist, ylist, zlist, power, profileType, duration, Nturns, camTriggerEvery, zStart, zStep, prewait, xOffset, yOffset, tmIndex
-#  print "clicked keyCode " + str(keyEvent.getKeyCode())
   if keyEvent.getKeyCode() == 10: # Enter is pressed!
       sd = SaveDialog('Save ROIs','.','Eprofile','.txt')
       directory = sd.getDirectory()
@@ -96,10 +98,8 @@ def doSomething(keyEvent):
       for i in range(len(xlist)):
             f.write('#cell num:'+str(i)+'\n')
             f.write('ENTRY_START\n')
-#            f.write('ABLATION(OFF,200.0)\n') #never used
             f.write('PRE_WAIT(' + str(prewait)+ ')\n')
             f.write('TM_INDEX(' + str(tmIndex)+ ')\n')
-#            f.write('PRE_TRIGGER(OFF,5000,CONTINUE)\n') #never used
             f.write('COORDINATES('+str(xOffset + xlist[i])+','+str(yOffset + ylist[i])+','+str(zStart + (zlist[i]-1)*zStep)+')\n')
             if(profileType == 'point'):
                 f.write('SCAN_TYPE(POINT)\n')
